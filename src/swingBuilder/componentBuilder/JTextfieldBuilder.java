@@ -5,7 +5,7 @@
  */
 package swingBuilder.componentBuilder;
 
-import swingBuilder.componentBuilder.ComponentBuilder;
+import java.util.HashMap;
 import javax.swing.JComponent;
 import javax.swing.JTextField;
 import model.MyComponent;
@@ -14,18 +14,35 @@ import model.MyComponent;
  *
  * @author Phong
  */
-public class JTextfieldBuilder extends ComponentBuilder{
+public class JTextfieldBuilder extends JComponentBuilder {
 
     private JTextField jTextfield;
-    
+
     public JTextfieldBuilder(MyComponent comp) {
-        jTextfield = new JTextField(comp.getName());
-        jTextfield.setSize(50, 20);
+        jTextfield = new JTextField();
+        initAttributes(comp);
     }
-    
+
     @Override
-    public JComponent build() {
+    public JTextField build() {
         return this.jTextfield;
     }
-    
+
+    @Override
+    protected void initAttributes(MyComponent comp) {
+        HashMap<String, String> attributes = comp.getAttributes();
+        for (String key : attributes.keySet()) {
+            switch (key) {
+                case "text": {
+                    jTextfield.setText(attributes.get(key));
+                    break;
+                }
+                case "col": {
+                    jTextfield.setColumns(Integer.parseInt(attributes.get(key)));
+                    break;
+                }
+            }
+        }
+    }
+
 }

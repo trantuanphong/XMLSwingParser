@@ -7,6 +7,7 @@ package swingBuilder.windowBuilder;
 
 import java.awt.FlowLayout;
 import java.awt.Window;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import model.MyComponent;
 import swingBuilder.SwingBuilderFactory;
@@ -15,24 +16,25 @@ import swingBuilder.SwingBuilderFactory;
  *
  * @author Phong
  */
-public class JFrameBuilder extends WindowBuilder {
+public class JDialogBuilder extends WindowBuilder {
 
-    private JFrame jframe;
+    private JDialog jdialog;
     
-    public JFrameBuilder(MyComponent comp) {
-        jframe = new JFrame(comp.getName());
-        jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jframe.setSize(500,500);
-        jframe.setLayout(new FlowLayout());
+    public JDialogBuilder(MyComponent comp) {
+        jdialog = new JDialog();
+        jdialog.setTitle(comp.getName());
+        jdialog.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        jdialog.setSize(500,500);
+        jdialog.setLayout(new FlowLayout());
         for (MyComponent cmp : comp.getChildren()) {
-            jframe.add(SwingBuilderFactory.getJComponentBuilder(cmp).build());
+            jdialog.add(SwingBuilderFactory.getJComponentBuilder(cmp).build());
         }
-        jframe.setVisible(true);
+        jdialog.setVisible(true);
     }
     
     @Override
     public Window build() {
-        return jframe;
+        return this.jdialog;
     }
     
 }

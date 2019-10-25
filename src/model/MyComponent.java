@@ -14,7 +14,7 @@ import java.util.HashMap;
  */
 public class MyComponent {
     private String name;
-    private HashMap attributes;
+    private HashMap<String,String> attributes;
     private ArrayList<MyComponent> children;
 
     public MyComponent() {

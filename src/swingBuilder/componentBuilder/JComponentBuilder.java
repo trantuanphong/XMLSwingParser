@@ -6,11 +6,12 @@
 package swingBuilder.componentBuilder;
 
 import javax.swing.JComponent;
+import swingBuilder.ComponentBuilder;
 
 /**
  *
  * @author Phong
  */
-public abstract class ComponentBuilder {
+public abstract class JComponentBuilder extends ComponentBuilder {
     public abstract JComponent build();
 }

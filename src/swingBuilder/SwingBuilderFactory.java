@@ -10,8 +10,9 @@ import swingBuilder.windowBuilder.WindowBuilder;
 import swingBuilder.componentBuilder.JTextfieldBuilder;
 import swingBuilder.componentBuilder.JLabelBuilder;
 import swingBuilder.componentBuilder.JButtonBuilder;
-import swingBuilder.componentBuilder.ComponentBuilder;
+import swingBuilder.componentBuilder.JComponentBuilder;
 import model.MyComponent;
+import swingBuilder.windowBuilder.JDialogBuilder;
 
 /**
  *
@@ -23,19 +24,19 @@ public class SwingBuilderFactory {
         
     }
     
-    public static final WindowBuilder getWindowBuilder(MyComponent comp) {
+    public static WindowBuilder getWindowBuilder(MyComponent comp) {
         switch (comp.getName()) {
             case "jframe": {
                 return new JFrameBuilder(comp);
             }
             case "jdialog": {
-                return null;
+                return new JDialogBuilder(comp);
             }
         }
         return null;
     }
     
-    public static final ComponentBuilder getComponentBuilder(MyComponent comp) {
+    public static JComponentBuilder getJComponentBuilder(MyComponent comp) {
         switch (comp.getName()) {
             case "jlabel": {
                 return new JLabelBuilder(comp);
