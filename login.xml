@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jframe layout="FlowLayout">
+    <jlabel title="Login" name="lblLogin"/>
+    <jlabel title="Username" name="lblUsername"/>
+    <jtextfield name="txtUsername"/>
+    <jlabel title="Password" name="lblPassword"/>
+    <jtextfield name="txtPassword" type="password"/>
+    <jbutton name="btnLogin" title="Login"/>
+</jframe>
+
