@@ -5,8 +5,8 @@
  */
 package swingBuilder.componentBuilder;
 
+import common.KeyWord;
 import java.util.HashMap;
-import javax.swing.JComponent;
 import javax.swing.JTextField;
 import model.MyComponent;
 
@@ -16,30 +16,34 @@ import model.MyComponent;
  */
 public class JTextfieldBuilder extends JComponentBuilder {
 
-    private JTextField jTextfield;
+    private JTextField jtextfield;
 
     public JTextfieldBuilder(MyComponent comp) {
-        jTextfield = new JTextField();
+        jtextfield = new JTextField();
         initAttributes(comp);
     }
 
     @Override
     public JTextField build() {
-        return this.jTextfield;
+        return this.jtextfield;
     }
-
+    
     @Override
     protected void initAttributes(MyComponent comp) {
         HashMap<String, String> attributes = comp.getAttributes();
         for (String key : attributes.keySet()) {
             switch (key) {
-                case "text": {
-                    jTextfield.setText(attributes.get(key));
+                case KeyWord.TEXT: {
+                    jtextfield.setText(attributes.get(key));
                     break;
                 }
-                case "col": {
-                    jTextfield.setColumns(Integer.parseInt(attributes.get(key)));
+                case KeyWord.LENGTH: {
+                    jtextfield.setColumns(Integer.parseInt(attributes.get(key)));
                     break;
+                }
+                default: {
+                    jtextfield = (JTextField) initJComponentAttributes(jtextfield, 
+                            key, attributes.get(key));
                 }
             }
         }

@@ -5,6 +5,7 @@
  */
 package swingBuilder.componentBuilder;
 
+import common.KeyWord;
 import java.util.HashMap;
 import javax.swing.JLabel;
 import model.MyComponent;
@@ -21,6 +22,7 @@ public class JLabelBuilder extends JComponentBuilder {
         initAttributes(comp);
     }
     
+    @Override
     public JLabel build() {
         return this.jlabel;
     }
@@ -30,9 +32,13 @@ public class JLabelBuilder extends JComponentBuilder {
         HashMap<String, String> attributes = comp.getAttributes();
         for (String key : attributes.keySet()) {
             switch (key) {
-                case "text": {
+                case KeyWord.TEXT: {
                     jlabel.setText(attributes.get(key));
                     break;
+                }
+                default: {
+                    jlabel = (JLabel) initJComponentAttributes(jlabel, 
+                            key, attributes.get(key));
                 }
             }
         }

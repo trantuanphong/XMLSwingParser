@@ -5,12 +5,23 @@
  */
 package swingBuilder.windowBuilder;
 
+import common.KeyWord;
 import java.awt.Window;
+import swingBuilder.ContainerBuilder;
+import swingBuilder.layoutBuilder.LayoutBuilderFactory;
 
 /**
  *
  * @author Phong
  */
-public abstract class WindowBuilder {
+public abstract class WindowBuilder extends ContainerBuilder {
     public abstract Window build();
+    
+    protected Window initWindowAttributes(Window window, String attr, String value) {
+        switch (attr) {
+            default: {
+                return (Window) initComponentAttributes(window, attr, value);
+            }
+        }
+    }
 }

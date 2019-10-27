@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jframe layout="FlowLayout">
+<jframe layout="flowLayout" hgap="50" vgap="25" align="center">
     <jlabel text="Login" name="lblLogin"/>
     <jlabel text="Username" name="lblUsername"/>
     <jtextfield name="txtUsername" text="Enter username here..." col="20"/>
     <jlabel text="Password" name="lblPassword"/>
-    <jtextfield name="txtPassword" type="password" text="Enter password here..." col="20"/>
+    <jtextfield name="txtPassword" type="password" text="Enter password here..." length="20"/>
     <jbutton name="btnLogin" text="Login"/>
 </jframe>
 

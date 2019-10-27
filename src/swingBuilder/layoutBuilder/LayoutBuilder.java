@@ -3,14 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package swingBuilder;
+package swingBuilder.layoutBuilder;
 
-import model.MyComponent;
+import java.awt.LayoutManager;
+import swingBuilder.SwingBuilder;
 
 /**
  *
  * @author Phong
  */
-public abstract class ComponentBuilder {
-    protected abstract void initAttributes(MyComponent comp) ;
+public abstract class LayoutBuilder extends SwingBuilder {
+    public abstract LayoutManager build();
 }

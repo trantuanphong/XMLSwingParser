@@ -6,7 +6,7 @@
 package main;
 
 import parser.XMLReader;
-import swingBuilder.SwingBuilderFactory;
+import swingBuilder.ComponentBuilderFactory;
 
 /**
  *
@@ -15,7 +15,7 @@ import swingBuilder.SwingBuilderFactory;
 public class Main {
     
     public static void main(String[] args){
-        SwingBuilderFactory.getWindowBuilder(
+        ComponentBuilderFactory.getInstance().getWindowBuilder(
                 new XMLReader("login.xml").read())
                 .build();
     }

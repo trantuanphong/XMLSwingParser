@@ -6,12 +6,20 @@
 package swingBuilder.componentBuilder;
 
 import javax.swing.JComponent;
-import swingBuilder.ComponentBuilder;
+import swingBuilder.ContainerBuilder;
 
 /**
  *
  * @author Phong
  */
-public abstract class JComponentBuilder extends ComponentBuilder {
+public abstract class JComponentBuilder extends ContainerBuilder {
     public abstract JComponent build();
+    
+    protected JComponent initJComponentAttributes(JComponent jcomp, String attr, String value) {
+        switch (attr) {
+            default: {
+                return (JComponent) initComponentAttributes(jcomp, attr, value);
+            }
+        }
+    }
 }

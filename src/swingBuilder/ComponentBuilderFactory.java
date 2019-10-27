@@ -5,46 +5,50 @@
  */
 package swingBuilder;
 
-import swingBuilder.windowBuilder.JFrameBuilder;
-import swingBuilder.windowBuilder.WindowBuilder;
-import swingBuilder.componentBuilder.JTextfieldBuilder;
-import swingBuilder.componentBuilder.JLabelBuilder;
-import swingBuilder.componentBuilder.JButtonBuilder;
-import swingBuilder.componentBuilder.JComponentBuilder;
+import common.KeyWord;
+import swingBuilder.windowBuilder.*;
+import swingBuilder.componentBuilder.*;
 import model.MyComponent;
-import swingBuilder.windowBuilder.JDialogBuilder;
 
 /**
  *
  * @author Phong
  */
-public class SwingBuilderFactory {
+public class ComponentBuilderFactory {
     
-    private SwingBuilderFactory() {
-        
+    private static ComponentBuilderFactory instance;
+    
+    private ComponentBuilderFactory() {
+    }
+
+    public static ComponentBuilderFactory getInstance() {
+        if (instance == null) {
+            instance = new ComponentBuilderFactory();
+        }
+        return instance;
     }
     
-    public static WindowBuilder getWindowBuilder(MyComponent comp) {
+    public WindowBuilder getWindowBuilder(MyComponent comp) {
         switch (comp.getName()) {
-            case "jframe": {
+            case KeyWord.JFRAME: {
                 return new JFrameBuilder(comp);
             }
-            case "jdialog": {
+            case KeyWord.JDIALOG: {
                 return new JDialogBuilder(comp);
             }
         }
         return null;
     }
     
-    public static JComponentBuilder getJComponentBuilder(MyComponent comp) {
+    public JComponentBuilder getJComponentBuilder(MyComponent comp) {
         switch (comp.getName()) {
-            case "jlabel": {
+            case KeyWord.JLABEL: {
                 return new JLabelBuilder(comp);
             }
-            case "jbutton": {
+            case KeyWord.JBUTTON: {
                 return new JButtonBuilder(comp);
             }
-            case "jtextfield": {
+            case KeyWord.JTEXTFIELD: {
                 return new JTextfieldBuilder(comp);
             }
         }

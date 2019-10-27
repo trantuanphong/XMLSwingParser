@@ -5,6 +5,7 @@
  */
 package swingBuilder.componentBuilder;
 
+import common.KeyWord;
 import java.util.HashMap;
 import javax.swing.JButton;
 import model.MyComponent;
@@ -17,8 +18,8 @@ public class JButtonBuilder extends JComponentBuilder {
     private JButton jbutton;
     
     public JButtonBuilder(MyComponent comp) {
-        jbutton = new JButton();
-        initAttributes(comp);
+       jbutton = new JButton();
+       initAttributes(comp);
     }
 
     @Override
@@ -31,9 +32,13 @@ public class JButtonBuilder extends JComponentBuilder {
         HashMap<String, String> attributes = comp.getAttributes();
         for (String key : attributes.keySet()) {
             switch (key) {
-                case "text": {
+                case KeyWord.TEXT: {
                     jbutton.setText(attributes.get(key));
                     break;
+                }
+                default: {
+                    jbutton = (JButton) initJComponentAttributes(jbutton, 
+                            key, attributes.get(key));
                 }
             }
         }
