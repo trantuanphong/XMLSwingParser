@@ -13,6 +13,10 @@ public class KeyWord {
     public static final String FLOW_LAYOUT = "flowLayout";
     public static final String BOX_LAYOUT = "boxLayout";
     
+    public static final String AXIS = "axis";
+    public static final String X_AXIS = "xAxis";
+    public static final String Y_AXIS = "yAxis";
+    
     public static final String HGAP = "hgap";
     public static final String VGAP = "vgap";
     public static final String ALIGN = "align";
@@ -27,6 +31,7 @@ public class KeyWord {
     public static final String JLABEL = "jlabel";
     public static final String JTEXTFIELD = "jtextfield";
     public static final String JBUTTON = "jbutton";
+    public static final String JPANEL = "jpanel";
     
     public static final String TITLE = "title";
     public static final String NAME = "name";

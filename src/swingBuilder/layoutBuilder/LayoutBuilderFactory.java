@@ -6,6 +6,7 @@
 package swingBuilder.layoutBuilder;
 
 import common.KeyWord;
+import java.awt.Container;
 import model.MyComponent;
 
 /**
@@ -26,12 +27,15 @@ public class LayoutBuilderFactory {
         return instance;
     }
     
-    public LayoutBuilder getLayoutBuilder(MyComponent comp, String layout) {
+    public LayoutBuilder getLayoutBuilder(Container container, 
+            MyComponent comp, String layout) {
         switch (layout) {
             case KeyWord.BOX_LAYOUT: {
-                
+                return new BoxLayoutBuilder(container, comp);
+            }
+            default: {
+                return new FlowLayoutBuilder(comp);
             }
         }
-        return new FlowLayoutBuilder(comp);
     }
 }

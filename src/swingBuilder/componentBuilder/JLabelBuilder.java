@@ -37,8 +37,7 @@ public class JLabelBuilder extends JComponentBuilder {
                     break;
                 }
                 default: {
-                    jlabel = (JLabel) initJComponentAttributes(jlabel, 
-                            key, attributes.get(key));
+                    initJComponentAttributes(jlabel, key, comp);
                 }
             }
         }

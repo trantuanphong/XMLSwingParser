@@ -37,6 +37,7 @@ public class ComponentBuilderFactory {
                 return new JDialogBuilder(comp);
             }
         }
+        System.out.println("Null Window Builder");
         return null;
     }
     
@@ -51,7 +52,11 @@ public class ComponentBuilderFactory {
             case KeyWord.JTEXTFIELD: {
                 return new JTextfieldBuilder(comp);
             }
+            case KeyWord.JPANEL: {
+                return new JPanelBuilder(comp);
+            }
         }
+        System.out.println("Null JComponent Builder");
         return null;
     }
 }

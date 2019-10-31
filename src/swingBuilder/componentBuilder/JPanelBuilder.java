@@ -5,26 +5,27 @@
  */
 package swingBuilder.componentBuilder;
 
-import common.KeyWord;
 import java.util.HashMap;
-import javax.swing.JButton;
+import javax.swing.JPanel;
 import model.MyComponent;
 
 /**
  *
  * @author Phong
  */
-public class JButtonBuilder extends JComponentBuilder {
-    private JButton jbutton;
-    
-    public JButtonBuilder(MyComponent comp) {
-       jbutton = new JButton();
-       initAttributes(comp);
+public class JPanelBuilder extends JComponentBuilder {
+
+    private JPanel jpanel;
+
+    public JPanelBuilder(MyComponent comp) {
+        jpanel = new JPanel();
+        initAttributes(comp);
+        jpanel = (JPanel) addChildComponent(jpanel, comp);
     }
 
     @Override
-    public JButton build() {
-        return this.jbutton;
+    public JPanel build() {
+        return this.jpanel;
     }
 
     @Override
@@ -32,15 +33,10 @@ public class JButtonBuilder extends JComponentBuilder {
         HashMap<String, String> attributes = comp.getAttributes();
         for (String key : attributes.keySet()) {
             switch (key) {
-                case KeyWord.TEXT: {
-                    jbutton.setText(attributes.get(key));
-                    break;
-                }
                 default: {
-                    initJComponentAttributes(jbutton, key, comp);
+                    initJComponentAttributes(jpanel, key, comp);
                 }
             }
         }
     }
-    
 }

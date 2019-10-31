@@ -42,8 +42,7 @@ public class JTextfieldBuilder extends JComponentBuilder {
                     break;
                 }
                 default: {
-                    jtextfield = (JTextField) initJComponentAttributes(jtextfield, 
-                            key, attributes.get(key));
+                    initJComponentAttributes(jtextfield, key, comp);
                 }
             }
         }

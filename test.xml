@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jframe title="Sample 2" layout="boxLayout">
+    <jlabel text="Login Screen"/>
+    <jpanel layout="flowLayout" align="left">
+        <jlabel name="lblUsername" text="Username"/>
+        <jtextfield name="txtUsername" length="20"/>
+    </jpanel>
+    <jpanel layout="flowLayout" align="left">
+        <jlabel name="lblPassword" text="Password"/>
+        <jtextfield name="txtPassword" length="20"/>
+    </jpanel>
+    <jbutton text="Login" name="btnLogin"/>
+</jframe>
+

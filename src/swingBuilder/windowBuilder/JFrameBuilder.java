@@ -5,11 +5,11 @@
  */
 package swingBuilder.windowBuilder;
 
+import common.KeyWord;
 import java.awt.Window;
+import java.util.HashMap;
 import javax.swing.JFrame;
 import model.MyComponent;
-import swingBuilder.ComponentBuilderFactory;
-import swingBuilder.layoutBuilder.FlowLayoutBuilder;
 
 /**
  *
@@ -20,14 +20,10 @@ public class JFrameBuilder extends WindowBuilder {
     private JFrame jframe;
 
     public JFrameBuilder(MyComponent comp) {
-        jframe = new JFrame(comp.getName());
-        jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jframe.setSize(500, 500);
-        for (MyComponent cmp : comp.getChildren()) {
-            jframe.add(ComponentBuilderFactory.getInstance()
-                    .getJComponentBuilder(cmp).build());
-        }
-        jframe.setVisible(true);
+        jframe = new JFrame();
+        initAttributes(comp);
+        addChildComponent(jframe, comp);
+        jframe.pack();
     }
 
     @Override
@@ -37,6 +33,20 @@ public class JFrameBuilder extends WindowBuilder {
 
     @Override
     protected void initAttributes(MyComponent comp) {
+        jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        jframe.setVisible(true);
+        HashMap<String, String> attributes = comp.getAttributes();
+        for (String key : attributes.keySet()) {
+            switch (key) {
+                case KeyWord.TITLE: {
+                    jframe.setTitle(attributes.get(key));
+                    break;
+                }
+                default: {
+                    initComponentAttributes(jframe.getContentPane(), key, comp);
+                }
+            }
+        }
     }
 
 }

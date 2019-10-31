@@ -6,6 +6,7 @@
 package swingBuilder.componentBuilder;
 
 import javax.swing.JComponent;
+import model.MyComponent;
 import swingBuilder.ContainerBuilder;
 
 /**
@@ -15,10 +16,11 @@ import swingBuilder.ContainerBuilder;
 public abstract class JComponentBuilder extends ContainerBuilder {
     public abstract JComponent build();
     
-    protected JComponent initJComponentAttributes(JComponent jcomp, String attr, String value) {
-        switch (attr) {
+    protected void initJComponentAttributes(JComponent jcomp, 
+            String key, MyComponent comp) {
+        switch (key) {
             default: {
-                return (JComponent) initComponentAttributes(jcomp, attr, value);
+                initComponentAttributes(jcomp, key, comp);
             }
         }
     }

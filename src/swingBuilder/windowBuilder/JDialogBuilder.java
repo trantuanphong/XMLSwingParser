@@ -5,11 +5,11 @@
  */
 package swingBuilder.windowBuilder;
 
-import java.awt.FlowLayout;
+import common.KeyWord;
 import java.awt.Window;
+import java.util.HashMap;
 import javax.swing.JDialog;
 import model.MyComponent;
-import swingBuilder.ComponentBuilderFactory;
 
 /**
  *
@@ -18,20 +18,11 @@ import swingBuilder.ComponentBuilderFactory;
 public class JDialogBuilder extends WindowBuilder {
 
     private JDialog jdialog;
-    
+
     public JDialogBuilder(MyComponent comp) {
         jdialog = new JDialog();
-        jdialog.setTitle(comp.getName());
-        jdialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-        jdialog.setSize(500,500);
-        jdialog.setLayout(new FlowLayout());
-        for (MyComponent cmp : comp.getChildren()) {
-            jdialog.add(ComponentBuilderFactory.getInstance()
-                    .getJComponentBuilder(cmp).build());
-        }
-        jdialog.setVisible(true);
     }
-    
+
     @Override
     public Window build() {
         return this.jdialog;
@@ -39,6 +30,19 @@ public class JDialogBuilder extends WindowBuilder {
 
     @Override
     protected void initAttributes(MyComponent comp) {
+        jdialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        jdialog.setVisible(true);
+        HashMap<String, String> attributes = comp.getAttributes();
+        for (String key : attributes.keySet()) {
+            switch (key) {
+                case KeyWord.TITLE: {
+                    jdialog.setTitle(attributes.get(key));
+                    break;
+                }
+                default: {
+                    initComponentAttributes(jdialog.getContentPane(), key, comp);
+                }
+            }
+        }
     }
-    
 }

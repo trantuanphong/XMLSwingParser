@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jframe layout="flowLayout" hgap="50" vgap="25" align="center">
+<jframe layout="boxLayout" title="Login" hgap="50" vgap="25" align="center">
     <jlabel text="Login" name="lblLogin"/>
     <jlabel text="Username" name="lblUsername"/>
     <jtextfield name="txtUsername" text="Enter username here..." col="20"/>

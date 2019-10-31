@@ -13,11 +13,10 @@ import swingBuilder.ComponentBuilderFactory;
  * @author Phong
  */
 public class Main {
-    
-    public static void main(String[] args){
+
+    public static void main(String[] args) {
         ComponentBuilderFactory.getInstance().getWindowBuilder(
-                new XMLReader("login.xml").read())
+                new XMLReader("test.xml").read())
                 .build();
     }
-    
 }

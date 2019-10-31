@@ -25,10 +25,6 @@ import org.xml.sax.SAXException;
 public class XMLReader {
 
     private File file;
-
-    public XMLReader(){
-        file = new File("login.xml");
-    }
     
     public XMLReader(String fileName) {
         file = new File(fileName);
