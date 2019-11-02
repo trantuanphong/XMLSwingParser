@@ -50,10 +50,28 @@ public class ComponentBuilderFactory {
                 return new JButtonBuilder(comp);
             }
             case KeyWord.JTEXTFIELD: {
-                return new JTextfieldBuilder(comp);
+                return new JTextFieldBuilder(comp);
             }
             case KeyWord.JPANEL: {
                 return new JPanelBuilder(comp);
+            }
+            case KeyWord.JCHECKBOX: {
+                return new JCheckBoxBuilder(comp);
+            }
+            case KeyWord.JPASSWORDFIELD: {
+                return new JPasswordFieldBuilder(comp);
+            }
+            case KeyWord.JRADIOBUTTON: {
+                return new JRadioButtonBuilder(comp);
+            }
+            case KeyWord.JCOMBOBOX: {
+                return new JComboBoxBuilder(comp);
+            }
+            case KeyWord.JLIST: {
+                return new JListBuilder(comp);
+            }
+            case KeyWord.JTABLE: {
+                return new JTableBuilder(comp);
             }
         }
         System.out.println("Null JComponent Builder");

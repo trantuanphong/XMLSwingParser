@@ -7,8 +7,27 @@
     </jpanel>
     <jpanel layout="flowLayout" align="left">
         <jlabel name="lblPassword" text="Password"/>
-        <jtextfield name="txtPassword" length="20"/>
+        <jpasswordfield name="txtPassword" length="20"/>
     </jpanel>
     <jbutton text="Login" name="btnLogin"/>
+    <jpanel layout="flowLayout" align="left">
+        <jcheckbox text="Save Password" name="checkBoxSavePassword" />
+    </jpanel>
+    <jpanel layout="flowLayout" align="left">
+        <jcheckbox text="Agree with Condition" name="checkBoxCondition" />
+    </jpanel>
+    <jpanel layout="flowLayout" align="left">
+        <jradiobutton text="Pay with Visa" name="radioVisa" isselected="true" />
+        <jradiobutton text="Pay with MasterCard" name="radioMaster" />
+    </jpanel>
+    <jpanel layout="flowLayout" align="left">
+        <jlabel name="lblCity" text="City"/>
+        <jcombobox name="Day" item="Ha Noi#Ho Chi Minh#Tokyo#New York" />
+        <jlabel name="lblGameConsole" text="Your Game Console"/>
+        <jlist name="gameConsole" item="Nintendo Switch#PS4 Pro#Xbox#PC" />
+    </jpanel>
+    <jpanel layout="flowLayout" align="left">
+        <jtable name="tableInfor" column="Name#Age#Phone Number#Email#Address" data="Nguyen Anh Hao#21#0971098063#anhhaovulang3012@gmail.com#Ha Noi|Tran Tuan Phong#21#0123456789#trantuanphong@gmail.com#Lang Son" />
+    </jpanel>
 </jframe>
 

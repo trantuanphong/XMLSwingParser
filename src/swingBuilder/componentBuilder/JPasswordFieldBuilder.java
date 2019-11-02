@@ -7,45 +7,46 @@ package swingBuilder.componentBuilder;
 
 import common.KeyWord;
 import java.util.HashMap;
-import javax.swing.JTextField;
+import javax.swing.JComponent;
+import javax.swing.JPasswordField;
 import model.MyComponent;
 
 /**
  *
- * @author Phong
+ * @author Anh Hao
  */
-public class JTextFieldBuilder extends JComponentBuilder {
+public class JPasswordFieldBuilder extends JComponentBuilder{
 
-    private JTextField jtextfield;
-
-    public JTextFieldBuilder(MyComponent comp) {
-        jtextfield = new JTextField();
+    JPasswordField jpassword;
+    
+    public JPasswordFieldBuilder(MyComponent comp){
+        jpassword = new JPasswordField();
         initAttributes(comp);
     }
-
-    @Override
-    public JTextField build() {
-        return this.jtextfield;
-    }
     
+    @Override
+    public JComponent build() {
+        return this.jpassword;
+    }
+
     @Override
     protected void initAttributes(MyComponent comp) {
         HashMap<String, String> attributes = comp.getAttributes();
         for (String key : attributes.keySet()) {
             switch (key) {
                 case KeyWord.TEXT: {
-                    jtextfield.setText(attributes.get(key));
+                    jpassword.setText(attributes.get(key));
                     break;
                 }
                 case KeyWord.LENGTH: {
-                    jtextfield.setColumns(Integer.parseInt(attributes.get(key)));
+                    jpassword.setColumns(Integer.parseInt(attributes.get(key)));
                     break;
                 }
                 default: {
-                    initJComponentAttributes(jtextfield, key, comp);
+                    initJComponentAttributes(jpassword, key, comp);
                 }
             }
         }
     }
-
+    
 }

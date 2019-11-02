@@ -7,45 +7,48 @@ package swingBuilder.componentBuilder;
 
 import common.KeyWord;
 import java.util.HashMap;
-import javax.swing.JTextField;
+import javafx.scene.control.RadioButton;
+import javax.swing.JComponent;
+import javax.swing.JRadioButton;
 import model.MyComponent;
 
 /**
  *
- * @author Phong
+ * @author Anh Hao
  */
-public class JTextFieldBuilder extends JComponentBuilder {
+public class JRadioButtonBuilder extends JComponentBuilder{
+    
+    JRadioButton jradiobutton;
 
-    private JTextField jtextfield;
-
-    public JTextFieldBuilder(MyComponent comp) {
-        jtextfield = new JTextField();
+    public JRadioButtonBuilder(MyComponent comp) {
+        jradiobutton = new JRadioButton();
         initAttributes(comp);
     }
 
     @Override
-    public JTextField build() {
-        return this.jtextfield;
+    public JComponent build() {
+        return this.jradiobutton;
     }
-    
+
     @Override
     protected void initAttributes(MyComponent comp) {
         HashMap<String, String> attributes = comp.getAttributes();
         for (String key : attributes.keySet()) {
             switch (key) {
                 case KeyWord.TEXT: {
-                    jtextfield.setText(attributes.get(key));
+                    jradiobutton.setText(attributes.get(key));
                     break;
                 }
-                case KeyWord.LENGTH: {
-                    jtextfield.setColumns(Integer.parseInt(attributes.get(key)));
-                    break;
+                case KeyWord.ISSELECTED: {
+                    if(attributes.get(key).toString().equals("true")){
+                        jradiobutton.setSelected(true);
+                    }
                 }
                 default: {
-                    initJComponentAttributes(jtextfield, key, comp);
+                    initJComponentAttributes(jradiobutton, key, comp);
                 }
             }
         }
     }
-
+    
 }
