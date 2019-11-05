@@ -8,7 +8,6 @@ package swingBuilder.componentBuilder;
 import common.KeyWord;
 import java.util.HashMap;
 import javax.swing.JComboBox;
-import javax.swing.JComponent;
 import model.MyComponent;
 
 /**
@@ -17,7 +16,7 @@ import model.MyComponent;
  */
 public class JComboBoxBuilder extends JComponentBuilder{
 
-    JComboBox<String> jcomboBox;
+    private JComboBox<String> jcomboBox;
 
     public JComboBoxBuilder(MyComponent comp) {
         jcomboBox = new JComboBox<>();
@@ -25,7 +24,7 @@ public class JComboBoxBuilder extends JComponentBuilder{
     }
     
     @Override
-    public JComponent build() {
+    public JComboBox build() {
         return this.jcomboBox;
     }
 
@@ -40,6 +39,7 @@ public class JComboBoxBuilder extends JComponentBuilder{
                     for(String value : values){
                         jcomboBox.addItem(value);
                     }
+                    break;
                 }
                 default: {
                     initJComponentAttributes(jcomboBox, key, comp);

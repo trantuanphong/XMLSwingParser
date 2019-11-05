@@ -15,9 +15,9 @@ import model.MyComponent;
  * @author Phong
  */
 public class ComponentBuilderFactory {
-    
+
     private static ComponentBuilderFactory instance;
-    
+
     private ComponentBuilderFactory() {
     }
 
@@ -27,9 +27,9 @@ public class ComponentBuilderFactory {
         }
         return instance;
     }
-    
+
     public WindowBuilder getWindowBuilder(MyComponent comp) {
-        switch (comp.getName()) {
+        switch (comp.getTagName()) {
             case KeyWord.JFRAME: {
                 return new JFrameBuilder(comp);
             }
@@ -40,9 +40,9 @@ public class ComponentBuilderFactory {
         System.out.println("Null Window Builder");
         return null;
     }
-    
+
     public JComponentBuilder getJComponentBuilder(MyComponent comp) {
-        switch (comp.getName()) {
+        switch (comp.getTagName()) {
             case KeyWord.JLABEL: {
                 return new JLabelBuilder(comp);
             }
@@ -74,7 +74,6 @@ public class ComponentBuilderFactory {
                 return new JTableBuilder(comp);
             }
         }
-        System.out.println("Null JComponent Builder");
-        return null;
+        return new JNullComponentBuilder(comp);
     }
 }

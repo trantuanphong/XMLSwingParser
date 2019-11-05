@@ -13,15 +13,15 @@ import java.util.HashMap;
  * @author Phong
  */
 public class MyComponent {
-    private String name;
+    private String tagName;
     private HashMap<String,String> attributes;
     private ArrayList<MyComponent> children;
 
     public MyComponent() {
     }
 
-    public MyComponent(String name, HashMap attribute, ArrayList<MyComponent> children) {
-        this.name = name;
+    public MyComponent(String tagName, HashMap attribute, ArrayList<MyComponent> children) {
+        this.tagName = tagName;
         this.attributes = attribute;
         this.children = children;
     }
@@ -42,16 +42,11 @@ public class MyComponent {
         this.children = children;
     }
 
-    public String getName() {
-        return name;
+    public String getTagName() {
+        return tagName;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return "MyComponent{" + "name=" + name + '}';
+    public void setTagName(String tagName) {
+        this.tagName = tagName;
     }
 }

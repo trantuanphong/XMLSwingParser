@@ -7,7 +7,6 @@ package swingBuilder.componentBuilder;
 
 import common.KeyWord;
 import java.util.HashMap;
-import javax.swing.JComponent;
 import javax.swing.JPasswordField;
 import model.MyComponent;
 
@@ -17,7 +16,7 @@ import model.MyComponent;
  */
 public class JPasswordFieldBuilder extends JComponentBuilder{
 
-    JPasswordField jpassword;
+    private JPasswordField jpassword;
     
     public JPasswordFieldBuilder(MyComponent comp){
         jpassword = new JPasswordField();
@@ -25,7 +24,7 @@ public class JPasswordFieldBuilder extends JComponentBuilder{
     }
     
     @Override
-    public JComponent build() {
+    public JPasswordField build() {
         return this.jpassword;
     }
 

@@ -21,6 +21,9 @@ public class JDialogBuilder extends WindowBuilder {
 
     public JDialogBuilder(MyComponent comp) {
         jdialog = new JDialog();
+        initAttributes(comp);
+        addChildComponent(jdialog, comp);
+        jdialog.pack();
     }
 
     @Override

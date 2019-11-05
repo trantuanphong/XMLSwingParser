@@ -5,6 +5,8 @@
  */
 package swingBuilder.componentBuilder;
 
+import java.util.HashMap;
+import javax.swing.ButtonGroup;
 import javax.swing.JComponent;
 import model.MyComponent;
 import swingBuilder.ContainerBuilder;
@@ -14,6 +16,7 @@ import swingBuilder.ContainerBuilder;
  * @author Phong
  */
 public abstract class JComponentBuilder extends ContainerBuilder {
+    protected static HashMap<String, ButtonGroup> buttonGroups = new HashMap();
     public abstract JComponent build();
     
     protected void initJComponentAttributes(JComponent jcomp, 

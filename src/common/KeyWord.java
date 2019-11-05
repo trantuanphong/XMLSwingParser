@@ -11,13 +11,16 @@ package common;
  */
 public class KeyWord {
 
+    //Layout
     public static final String FLOW_LAYOUT = "flowLayout";
     public static final String BOX_LAYOUT = "boxLayout";
 
+    //Axis
     public static final String AXIS = "axis";
     public static final String X_AXIS = "xAxis";
     public static final String Y_AXIS = "yAxis";
 
+    //Align
     public static final String HGAP = "hgap";
     public static final String VGAP = "vgap";
     public static final String ALIGN = "align";
@@ -27,6 +30,7 @@ public class KeyWord {
     public static final String LEFT = "left";
     public static final String TRAILING = "trailing";
 
+    //Component
     public static final String JFRAME = "jframe";
     public static final String JDIALOG = "jdialog";
     public static final String JLABEL = "jlabel";
@@ -41,10 +45,11 @@ public class KeyWord {
     public static final String JLIST = "jlist";
     public static final String JTABLE = "jtable";
 
+    //Attribute
     public static final String COLUMN = "column";
     public static final String DATA = "data";
     public static final String ITEM = "item";
-    public static final String ISSELECTED = "isselected";
+    public static final String IS_SELECTED = "isselected";
     public static final String TITLE = "title";
     public static final String NAME = "name";
     public static final String TEXT = "text";
@@ -52,4 +57,5 @@ public class KeyWord {
     public static final String WIDTH = "width";
     public static final String HEIGHT = "height";
     public static final String LAYOUT = "layout";
+    public static final String GROUP = "group";
 }

@@ -42,5 +42,4 @@ public abstract class ContainerBuilder extends SwingBuilder {
         return container;
     }
     
-    
 }

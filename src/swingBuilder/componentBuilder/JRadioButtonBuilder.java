@@ -7,8 +7,7 @@ package swingBuilder.componentBuilder;
 
 import common.KeyWord;
 import java.util.HashMap;
-import javafx.scene.control.RadioButton;
-import javax.swing.JComponent;
+import javax.swing.ButtonGroup;
 import javax.swing.JRadioButton;
 import model.MyComponent;
 
@@ -16,9 +15,9 @@ import model.MyComponent;
  *
  * @author Anh Hao
  */
-public class JRadioButtonBuilder extends JComponentBuilder{
-    
-    JRadioButton jradiobutton;
+public class JRadioButtonBuilder extends JComponentBuilder {
+
+    private JRadioButton jradiobutton;
 
     public JRadioButtonBuilder(MyComponent comp) {
         jradiobutton = new JRadioButton();
@@ -26,7 +25,7 @@ public class JRadioButtonBuilder extends JComponentBuilder{
     }
 
     @Override
-    public JComponent build() {
+    public JRadioButton build() {
         return this.jradiobutton;
     }
 
@@ -39,10 +38,20 @@ public class JRadioButtonBuilder extends JComponentBuilder{
                     jradiobutton.setText(attributes.get(key));
                     break;
                 }
-                case KeyWord.ISSELECTED: {
-                    if(attributes.get(key).toString().equals("true")){
+                case KeyWord.IS_SELECTED: {
+                    if (attributes.get(key).equalsIgnoreCase("true")) {
                         jradiobutton.setSelected(true);
+                    } else {
+                        jradiobutton.setSelected(false);
                     }
+                    break;
+                }
+                case KeyWord.GROUP: {
+                    if (!buttonGroups.containsKey(attributes.get(key))) {
+                        buttonGroups.put(attributes.get(key), new ButtonGroup());
+                    }
+                    buttonGroups.get(attributes.get(key)).add(jradiobutton);
+                    break;
                 }
                 default: {
                     initJComponentAttributes(jradiobutton, key, comp);
@@ -50,5 +59,5 @@ public class JRadioButtonBuilder extends JComponentBuilder{
             }
         }
     }
-    
+
 }

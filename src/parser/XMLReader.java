@@ -66,7 +66,7 @@ public class XMLReader {
                 childrenComponent.add(read(childrenNode.item(i)));
             }
         }
-        component.setName(node.getNodeName());
+        component.setTagName(node.getNodeName());
         component.setAttributes(getAttributes(node));
         component.setChildren(childrenComponent);
         return component;

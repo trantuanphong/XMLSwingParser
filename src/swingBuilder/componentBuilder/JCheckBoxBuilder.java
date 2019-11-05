@@ -8,7 +8,6 @@ package swingBuilder.componentBuilder;
 import common.KeyWord;
 import java.util.HashMap;
 import javax.swing.JCheckBox;
-import javax.swing.JComponent;
 import model.MyComponent;
 
 /**
@@ -25,7 +24,7 @@ public class JCheckBoxBuilder extends JComponentBuilder{
     }
     
     @Override
-    public JComponent build() {
+    public JCheckBox build() {
         return this.jcheckBox;
     }
 

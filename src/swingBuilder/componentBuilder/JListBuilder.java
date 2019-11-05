@@ -7,7 +7,6 @@ package swingBuilder.componentBuilder;
 
 import common.KeyWord;
 import java.util.HashMap;
-import javax.swing.JComponent;
 import javax.swing.JList;
 import model.MyComponent;
 
@@ -17,7 +16,7 @@ import model.MyComponent;
  */
 public class JListBuilder extends JComponentBuilder{
 
-    JList jlist; 
+    private JList jlist; 
 
     public JListBuilder(MyComponent comp) {
         jlist = new JList();
@@ -25,7 +24,7 @@ public class JListBuilder extends JComponentBuilder{
     }
     
     @Override
-    public JComponent build() {
+    public JList build() {
         return this.jlist;
     }
 
@@ -35,12 +34,10 @@ public class JListBuilder extends JComponentBuilder{
         for (String key : attributes.keySet()) {
             switch (key) {
                 case KeyWord.ITEM: {
-                    String temp = attributes.get(key).toString();
+                    String temp = attributes.get(key);
                     String[] values = temp.split("\\#");
-//                    for(String value : values){
-//                        jlist.
-//                    }
                     jlist = new JList(values);
+                    break;
                 }
                 default: {
                     initJComponentAttributes(jlist, key, comp);

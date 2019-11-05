@@ -17,8 +17,8 @@
         <jcheckbox text="Agree with Condition" name="checkBoxCondition" />
     </jpanel>
     <jpanel layout="flowLayout" align="left">
-        <jradiobutton text="Pay with Visa" name="radioVisa" isselected="true" />
-        <jradiobutton text="Pay with MasterCard" name="radioMaster" />
+        <jradiobutton text="Pay with Visa" name="radioVisa" isselected="true" group="g1" />
+        <jradiobutton text="Pay with MasterCard" name="radioMaster" group="g1"/>
     </jpanel>
     <jpanel layout="flowLayout" align="left">
         <jlabel name="lblCity" text="City"/>
@@ -30,4 +30,3 @@
         <jtable name="tableInfor" column="Name#Age#Phone Number#Email#Address" data="Nguyen Anh Hao#21#0971098063#anhhaovulang3012@gmail.com#Ha Noi|Tran Tuan Phong#21#0123456789#trantuanphong@gmail.com#Lang Son" />
     </jpanel>
 </jframe>
-

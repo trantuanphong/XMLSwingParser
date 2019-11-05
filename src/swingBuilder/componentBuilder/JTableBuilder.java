@@ -8,7 +8,6 @@ package swingBuilder.componentBuilder;
 import common.KeyWord;
 import java.util.HashMap;
 import java.util.Vector;
-import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -18,45 +17,50 @@ import model.MyComponent;
  *
  * @author Anh Hao
  */
-public class JTableBuilder extends JComponentBuilder{
+public class JTableBuilder extends JComponentBuilder {
 
-    JTable jtable;
+    private Vector column;
+    private Vector data;
+    private JTable jtable;
 
     public JTableBuilder(MyComponent comp) {
         jtable = new JTable();
+        data = new Vector();
+        column = new Vector();
         initAttributes(comp);
     }
-    
+
     @Override
-    public JComponent build() {
-        return this.jtable;
+    public JScrollPane build() {
+        jtable.setModel(new DefaultTableModel(data, column));
+        return new JScrollPane(jtable);
     }
 
     @Override
     protected void initAttributes(MyComponent comp) {
-        Vector column = new Vector();
-        Vector data = new Vector();
         HashMap<String, String> attributes = comp.getAttributes();
         for (String key : attributes.keySet()) {
             switch (key) {
                 case KeyWord.COLUMN: {
-                    String temp = attributes.get(key).toString();
+                    String temp = attributes.get(key);
                     String[] values = temp.split("\\#");
-                    for(String value : values){
+                    for (String value : values) {
                         column.add(value);
                     }
+                    break;
                 }
                 case KeyWord.DATA: {
-                    String temp = attributes.get(key).toString();
+                    String temp = attributes.get(key);
                     String[] values = temp.split("\\|");
-                    for(String value : values){
+                    for (String value : values) {
                         String[] rowDatas = value.split("\\#");
                         Vector tempData = new Vector();
-                        for(String columnData : rowDatas){
+                        for (String columnData : rowDatas) {
                             tempData.add(columnData);
                         }
+                        data.add(tempData);
                     }
-                    jtable.setModel(new DefaultTableModel(data, column));
+                    break;
                 }
                 default: {
                     initJComponentAttributes(jtable, key, comp);
@@ -64,5 +68,4 @@ public class JTableBuilder extends JComponentBuilder{
             }
         }
     }
-    
 }
