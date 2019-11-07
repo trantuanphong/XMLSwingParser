@@ -5,10 +5,15 @@
  */
 package main;
 
+import java.awt.Font;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileSystemView;
+import model.MyComponent;
 import parser.XMLReader;
 import swingBuilder.ComponentBuilderFactory;
+import swingBuilder.windowBuilder.WindowBuilder;
+import validation.MyValidator;
 
 /**
  *
@@ -21,6 +26,12 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
+        this.setTitle("XML Swing Parser");
+        this.setVisible(true);
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+
+        jLabel1.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
     }
 
     /**
@@ -62,11 +73,12 @@ public class Main extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnLoad, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(135, 135, 135))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(135, 135, 135)
-                        .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -74,12 +86,11 @@ public class Main extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtXMLPath, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnBrowse)))))
+                                .addComponent(btnBrowse))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(115, 115, 115)
+                        .addComponent(jLabel1)))
                 .addContainerGap(9, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnLoad, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(135, 135, 135))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,10 +128,24 @@ public class Main extends javax.swing.JFrame {
 
     private void btnLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadActionPerformed
         // TODO add your handling code here:
-        ComponentBuilderFactory.getInstance()
-                .getWindowBuilder(
-                        new XMLReader(txtXMLPath.getText()).read())
-                .build();
+        String filePath = txtXMLPath.getText();
+        if (!MyValidator.getInstance().isCorrectFileType(filePath, ".XML")
+                || !MyValidator.getInstance().isFileExist(filePath)) {
+            JOptionPane.showMessageDialog(this, "Invalid XML Path or File");
+        } else {
+            MyComponent comp = new XMLReader(filePath).read();
+            if (!MyValidator.getInstance().isWellComponent(comp)) {
+                JOptionPane.showMessageDialog(this, "Not well-form!");
+            } else {
+                WindowBuilder builder = ComponentBuilderFactory.getInstance()
+                        .getWindowBuilder(comp);
+                if (builder == null) {
+                    JOptionPane.showMessageDialog(this, "Invalid XML Form");
+                } else {
+                    builder.build().setLocationRelativeTo(null);
+                }
+            }
+        }
     }//GEN-LAST:event_btnLoadActionPerformed
 
     /**
@@ -153,8 +178,7 @@ public class Main extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Main main = new Main();
-                main.setVisible(true);
+                new Main();
             }
         });
     }

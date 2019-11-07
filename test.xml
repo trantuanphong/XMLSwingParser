@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jframe title="Sample 2" layout="boxLayout">
-    <jlabel text="Login Screen"/>
+    <jlabel text="Login Screen" font-size="20"/>
     <jpanel layout="flowLayout" align="left">
-        <jlabel name="lblUsername" text="Username"/>
+        <jlabel name="lblUsername" text="Username" font-name="serif" font-style="bold"/>
         <jtextfield name="txtUsername" length="20"/>
     </jpanel>
     <jpanel layout="flowLayout" align="left">
@@ -11,13 +11,13 @@
     </jpanel>
     <jbutton text="Login" name="btnLogin"/>
     <jpanel layout="flowLayout" align="left">
-        <jcheckbox text="Save Password" name="checkBoxSavePassword" />
+        <jcheckbox text="Save Password" name="checkBoxSavePassword" is-checked="true"/>
     </jpanel>
     <jpanel layout="flowLayout" align="left">
         <jcheckbox text="Agree with Condition" name="checkBoxCondition" />
     </jpanel>
     <jpanel layout="flowLayout" align="left">
-        <jradiobutton text="Pay with Visa" name="radioVisa" isselected="true" group="g1" />
+        <jradiobutton text="Pay with Visa" name="radioVisa" is-selected="true" group="g1" />
         <jradiobutton text="Pay with MasterCard" name="radioMaster" group="g1"/>
     </jpanel>
     <jpanel layout="flowLayout" align="left">

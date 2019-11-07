@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<components>
+    <component name="jframe">
+    </component>
+    <component name="jpanel">
+    </component>
+    <component name="jlabel">
+        <required>text</required>
+    </component>
+    <component name="jtextfield">
+    </component>
+    <component name="jpasswordfield">
+    </component>
+    <component name="jbutton">
+        <required>text</required>
+    </component>
+    <component name="jcheckbox">
+    </component>
+    <component name="jradiobutton">
+    </component>
+    <component name="jcombobox">
+    </component>
+    <component name="jlist">
+    </component>
+    <component name="jtable">
+        <required>column</required>
+        <no-required>data</no-required>
+    </component>
+	
+</components>

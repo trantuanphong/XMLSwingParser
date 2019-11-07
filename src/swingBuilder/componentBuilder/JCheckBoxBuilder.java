@@ -37,6 +37,14 @@ public class JCheckBoxBuilder extends JComponentBuilder{
                     jcheckBox.setText(attributes.get(key));
                     break;
                 }
+                case KeyWord.IS_CHECKED: {
+                    if (attributes.get(key).equalsIgnoreCase("true")) {
+                        jcheckBox.setSelected(true);
+                    } else {
+                        jcheckBox.setSelected(false);
+                    }
+                    break;
+                }
                 default: {
                     initJComponentAttributes(jcheckBox, key, comp);
                 }

@@ -3,18 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/GitClone/XMLSwingParser/src/parser/XMLReader.java</file>
-            <file>file:/D:/GitClone/XMLSwingParser/src/swingBuilder/windowBuilder/JDialogBuilder.java</file>
-            <file>file:/D:/GitClone/XMLSwingParser/src/swingBuilder/windowBuilder/WindowBuilder.java</file>
             <file>file:/D:/GitClone/XMLSwingParser/test.xml</file>
-            <file>file:/D:/GitClone/XMLSwingParser/src/swingBuilder/componentBuilder/JButtonBuilder.java</file>
-            <file>file:/D:/GitClone/XMLSwingParser/src/swingBuilder/SwingBuilder.java</file>
-            <file>file:/D:/GitClone/XMLSwingParser/src/swingBuilder/ContainerBuilder.java</file>
-            <file>file:/D:/GitClone/XMLSwingParser/src/swingBuilder/ComponentBuilderFactory.java</file>
-            <file>file:/D:/GitClone/XMLSwingParser/src/swingBuilder/componentBuilder/JNullComponentBuilder.java</file>
-            <file>file:/D:/GitClone/XMLSwingParser/src/swingBuilder/componentBuilder/JComponentBuilder.java</file>
-            <file>file:/D:/GitClone/XMLSwingParser/src/swingBuilder/windowBuilder/JFrameBuilder.java</file>
-            <file>file:/D:/GitClone/XMLSwingParser/src/main/Main.java</file>
+            <file>file:/D:/GitClone/XMLSwingParser/validate.xsd</file>
         </group>
     </open-files>
 </project-private>
