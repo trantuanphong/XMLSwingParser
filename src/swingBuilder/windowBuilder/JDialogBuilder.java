@@ -6,7 +6,6 @@
 package swingBuilder.windowBuilder;
 
 import common.KeyWord;
-import java.awt.Window;
 import java.util.HashMap;
 import javax.swing.JDialog;
 import model.MyComponent;
@@ -27,7 +26,7 @@ public class JDialogBuilder extends WindowBuilder {
     }
 
     @Override
-    public Window build() {
+    public JDialog build() {
         return this.jdialog;
     }
 

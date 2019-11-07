@@ -6,7 +6,6 @@
 package swingBuilder.windowBuilder;
 
 import common.KeyWord;
-import java.awt.Window;
 import java.util.HashMap;
 import javax.swing.JFrame;
 import model.MyComponent;
@@ -27,13 +26,13 @@ public class JFrameBuilder extends WindowBuilder {
     }
 
     @Override
-    public Window build() {
+    public JFrame build() {
         return jframe;
     }
 
     @Override
     protected void initAttributes(MyComponent comp) {
-        jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        jframe.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         jframe.setVisible(true);
         HashMap<String, String> attributes = comp.getAttributes();
         for (String key : attributes.keySet()) {

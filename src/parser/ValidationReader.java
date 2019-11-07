@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import model.WellComponent;
+import model.ValidComponent;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
@@ -41,8 +41,8 @@ public class ValidationReader {
         }
     }
     
-    public List<WellComponent> getListValidation(Document doc){
-        List<WellComponent> listValidation = new ArrayList<>();
+    public List<ValidComponent> getListValidation(Document doc){
+        List<ValidComponent> listValidation = new ArrayList<>();
         
         NodeList components = doc.getElementsByTagName("component");
         for (int i = 0; i < components.getLength(); i++) {
@@ -64,7 +64,7 @@ public class ValidationReader {
                     listNoRequired.add(node.getTextContent());
                 }
                 if (j==(childs.getLength()-1)){
-                    listValidation.add(new WellComponent(name, listRequired, listNoRequired));
+                    listValidation.add(new ValidComponent(name, listRequired, listNoRequired));
                 }
             }
         }

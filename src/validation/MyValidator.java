@@ -6,11 +6,10 @@
 package validation;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import model.MyComponent;
-import model.WellComponent;
+import model.ValidComponent;
 import org.w3c.dom.Document;
 import parser.ValidationReader;
 
@@ -26,8 +25,8 @@ public class MyValidator {
     private MyValidator() {
         wellComps = new HashMap();
         parser.ValidationReader vr = new ValidationReader();
-        Document doc = vr.initDocument("validate.xml");
-        for (WellComponent wellComp : vr.getListValidation(doc)) {
+        Document doc = vr.initDocument("validation.xml");
+        for (ValidComponent wellComp : vr.getListValidation(doc)) {
             wellComps.put(wellComp.getName(), wellComp.getListRequired());
         }
     }
@@ -47,21 +46,25 @@ public class MyValidator {
         return filePath.toUpperCase().endsWith(extension.toUpperCase());
     }
 
-    public boolean isWellComponent(MyComponent comp) {
+    public ValidationResponse isWellComponent(MyComponent comp) {
         if (!wellComps.containsKey(comp.getTagName())) {
-            return false;
+            return new ValidationResponse(false,
+                    "Invalid tag " + comp.getTagName());
         } else {
             for (String require : wellComps.get(comp.getTagName())) {
                 if (!comp.getAttributes().containsKey(require)) {
-                    return false;
+                    return new ValidationResponse(false,
+                            "Tag " + comp.getTagName()
+                            + " does not have required attribute: " + require);
                 }
             }
             for (MyComponent child : comp.getChildren()) {
-                if (!isWellComponent(child)) {
-                    return false;
+                ValidationResponse validRes = isWellComponent(child);
+                if (!validRes.getResult()) {
+                    return validRes;
                 }
             }
         }
-        return true;
+        return new ValidationResponse(true, "Success");
     }
 }

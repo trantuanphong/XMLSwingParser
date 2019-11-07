@@ -11,16 +11,16 @@ import java.util.List;
  *
  * @author Anh Hao
  */
-public class WellComponent {
+public class ValidComponent {
 
     private String name;
     private List<String> listRequired;
     private List<String> listNoRequired;
 
-    public WellComponent() {
+    public ValidComponent() {
     }
 
-    public WellComponent(String name, List<String> listRequired, List<String> listNoRequired) {
+    public ValidComponent(String name, List<String> listRequired, List<String> listNoRequired) {
         this.name = name;
         this.listRequired = listRequired;
         this.listNoRequired = listNoRequired;

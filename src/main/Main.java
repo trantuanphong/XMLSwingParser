@@ -14,6 +14,7 @@ import parser.XMLReader;
 import swingBuilder.ComponentBuilderFactory;
 import swingBuilder.windowBuilder.WindowBuilder;
 import validation.MyValidator;
+import validation.ValidationResponse;
 
 /**
  *
@@ -128,22 +129,19 @@ public class Main extends javax.swing.JFrame {
 
     private void btnLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadActionPerformed
         // TODO add your handling code here:
-        String filePath = txtXMLPath.getText();
+        String filePath = txtXMLPath.getText().trim();
         if (!MyValidator.getInstance().isCorrectFileType(filePath, ".XML")
                 || !MyValidator.getInstance().isFileExist(filePath)) {
             JOptionPane.showMessageDialog(this, "Invalid XML Path or File");
         } else {
             MyComponent comp = new XMLReader(filePath).read();
-            if (!MyValidator.getInstance().isWellComponent(comp)) {
-                JOptionPane.showMessageDialog(this, "Not well-form!");
+            ValidationResponse validRes = MyValidator.getInstance().isWellComponent(comp);
+            if (!validRes.getResult()) {
+                JOptionPane.showMessageDialog(this, validRes.getMessage());
             } else {
                 WindowBuilder builder = ComponentBuilderFactory.getInstance()
                         .getWindowBuilder(comp);
-                if (builder == null) {
-                    JOptionPane.showMessageDialog(this, "Invalid XML Form");
-                } else {
-                    builder.build().setLocationRelativeTo(null);
-                }
+                builder.build().setLocationRelativeTo(null);
             }
         }
     }//GEN-LAST:event_btnLoadActionPerformed

@@ -37,8 +37,7 @@ public class ComponentBuilderFactory {
                 return new JDialogBuilder(comp);
             }
         }
-        System.out.println("Null Window Builder");
-        return null;
+        return new JNullWindowBuilder(comp);
     }
 
     public JComponentBuilder getJComponentBuilder(MyComponent comp) {
